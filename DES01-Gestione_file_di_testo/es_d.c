@@ -2,10 +2,10 @@
 *   Bianchi Alessio                	4°H                              	    *
 *                                                                       	*
 *                                                                         	*
-*     es	file 4                                           	            *
+*     es	file 2                                            	            *
 *                                                                       	*
 *                                                                       	*
-*              	21/11/22                                                 	*
+*              	15/09/22                                                 	*
 *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,26 +13,26 @@
 
 int main()
 {
-	char pfile[]={"numeri.txt"};
+	char pfile[]={"numeri.txt"};   //dichgiarazione puntatori
 	char pfile2[]={"pari.txt"};	
 	char pfile3[]={"dispari.txt"};
 	
 	char c;
 	
-	FILE *FileIN,*FileOUT,*FileOUT2;
+	FILE *FileIN,*FileOUT,*FileOUT2;   //dichgiarazione file
 
 	
-	FileIN=fopen(pfile,"r");
-	FileOUT=fopen(pfile2,"a");
-	FileOUT2=fopen(pfile3,"a");
+	FileIN=fopen(pfile,"r");  //apertura file in lettura
+	FileOUT=fopen(pfile2,"a");  //apertura file in append
+	FileOUT2=fopen(pfile3,"a");  //apertura file in append
 	
 	if (FileIN != NULL && FileOUT != NULL)
 	{
-		while(!feof(FileIN))
+		while(!feof(FileIN))  //controlla se il carattere è diverso dalla fine del file
 		{
 			c=fgetc(FileIN);
 
-			if(c%2==0)
+			if(c%2==0)  //controlla se il carattere letto e un numero pari o dispari
 			{
 				fputc(c,FileOUT);				
 			}
@@ -43,14 +43,14 @@ int main()
 			}
 
 		}
-		fclose(FileIN);
+		fclose(FileIN);  //chiusura di tutti i file 
 		fclose(FileOUT);
 		fclose(FileOUT2);		
 		
 	}
 	
 	else
-	printf("\nerrore in apertura file");
+	printf("\nerrore in apertura file");  //avvisa se c'è un errore nell'apertura del file
 	printf("\n");
 	system("pause");
 
