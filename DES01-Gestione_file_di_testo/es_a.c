@@ -13,36 +13,36 @@
 
 int main()
 {
-	char pfile[MAX+1];
+	char pfile[MAX+1];   //definisce i puntatori
 	char pfile2[MAX+1];	
 	char c;
 	
-	FILE *FileIN,*FileOUT;
+	FILE *FileIN,*FileOUT; 
 	
-	printf("Nome del file da leggere:");
+	printf("Nome del file da leggere:");  //scelta del file da aprire
 	scanf("%s",pfile);
-	printf("Nome del file destinazione:");
+	printf("Nome del file destinazione:");    //scelta del file destinazione da aprire
 	scanf("%s",pfile2);
 	
 	FileIN=fopen(pfile,"r");
 	FileOUT=fopen(pfile2,"a");
 	
-	if (FileIN != NULL && FileOUT != NULL)
+	if (FileIN != NULL && FileOUT != NULL)  //trova se il carattere letto è diverso da null
 	{
-		while(!feof(FileIN))
+		while(!feof(FileIN))   //coninua finche diverso dalla fine del file 
 		{
-			c=fgetc(FileIN);
+			c=fgetc(FileIN);     //prende ogni carattere e controlla se compreso tra a e z
 			if(c>='a' && c<='z')
 			c-=32;
 			fputc(c,FileOUT);
 		}
-		fclose(FileIN);
+		fclose(FileIN);   //chiusura di entrambi i file
 		fclose(FileOUT);
 		
 	}
 	
 	else
-	printf("\nerrore in apertura file");
+	printf("\nerrore in apertura file");  //avvisa se c'è un errore nell'apertura file
 	printf("\n");
 	system("pause");
 
