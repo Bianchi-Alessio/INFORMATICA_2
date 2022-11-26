@@ -104,10 +104,10 @@ void decrypt(char st[],char st1[])
 							
 					if(c=='A' || c=='B' || c=='C' || c=='a' || c=='b' || c=='c')  //controlla se c uguale a x,y, e z maiuscole e minuscole
 					{
-						c+=26;			//toglie a c 26 nel codice ascii
+						c+=26;			//aggiunge a c 26 nel codice ascii
 					}
 					
-					c-=3;			//aggiunge a c 3 nel codice ascii
+					c-=3;			//toglie a c 3 nel codice ascii
 
 				
 					fputc(c,FileOUT);		//inserisce il carattere preso da c nel file destinazione
