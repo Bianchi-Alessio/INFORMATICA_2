@@ -1,12 +1,14 @@
-/****************************************************************************
-*   Bianchi Alessio                	4°H                              	    *
-*                                                                       	*
-*                                                                         	*
-*     es	file 3                                            	            *
-*                                                                       	*
-*                                                                       	*
-*              	15/09/22                                                 	*
-*****************************************************************************/
+/** ****************************************************************************************
+* \mainpage <nome del progetto>
+*
+* @brief <conta e stampa il numero di caratteri, righe e parole del file nomi.txt>
+* 
+* @author <Bianchi Alessio>
+* @date <21/11/22> 
+* @version 1.0 <21/11/22> Versione iniziale
+* @version 1.1 <21/11/22> <nessuna modifica apportata>
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 50
