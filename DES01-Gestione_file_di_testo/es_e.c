@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define M 50
+#define KEY 3
 
 void crypt(char [],char []);
 void decrypt(char [],char []);
@@ -57,7 +58,7 @@ void crypt(char st[],char st1[])
 						c-=26;			//toglie a c 26 nel codice ascii
 					}
 					
-					c+=3;			//aggiunge a c 3 nel codice ascii
+					c+=KEY;			//aggiunge a c 3 nel codice ascii
 
 				
 					fputc(c,FileOUT);		//inserisce il carattere preso da c nel file destinazione	
@@ -107,7 +108,7 @@ void decrypt(char st[],char st1[])
 						c+=26;			//aggiunge a c 26 nel codice ascii
 					}
 					
-					c-=3;			//toglie a c 3 nel codice ascii
+					c-=KEY;			//toglie a c 3 nel codice ascii
 
 				
 					fputc(c,FileOUT);		//inserisce il carattere preso da c nel file destinazione
