@@ -1,12 +1,14 @@
-/****************************************************************************
-*   Bianchi Alessio                	4°H                              	    *
-*                                                                       	*
-*                                                                         	*
-*     es	file 2                                            	            *
-*                                                                       	*
-*                                                                       	*
-*              	15/09/22                                                 	*
-*****************************************************************************/
+/** ****************************************************************************************
+* \mainpage <es_b.c>
+*
+* @brief <copia il testo dal file entrata al file destinazione>
+* 
+* @author <Bianchi Alessio>
+* @date <21/11/22> 
+* @version 1.0 <21/11/22> Versione iniziale
+* @version 1.1 <21/11/22> <nessuna modifica apportata>
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 50 //lunghezza 
