@@ -1,12 +1,14 @@
-/****************************************************************************
-*   Bianchi Alessio                	4°H                              	    *
-*                                                                       	*
-*                                                                         	*
-*     es	file 5                                            	            *
-*                                                                       	*
-*                                                                       	*
-*              	21/11/22                                                 	*
-*****************************************************************************/
+/** ****************************************************************************************
+* \mainpage <es_e.c>
+*
+* @brief <funzioni che cryptano e decryptano il testo del file base>
+* 
+* @author <Bianchi Alessio>
+* @date <21/11/22> 
+* @version 1.0 <21/11/22> Versione iniziale
+* @version 1.1 <28/11/22> <aggiunta una variabile KEY alle funzioni>
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #define M 50
@@ -18,18 +20,18 @@ void decrypt(char [],char []);
 int main()
 {
 
-	char st[]={"base.txt"},st1[]={"crypt.txt"},st2[]={"decrypt.txt"};		//assegna ad ogni stringa il nome del file 
+	char nome_base[]={"base.txt"},nome_crypt[]={"crypt.txt"},nome_decrypt[]={"decrypt.txt"};		//assegna ad ogni stringa il nome del file 
 
 	
- 	crypt(st,st1);
+ 	crypt(nome_base,nome_crypt);
  	
-	decrypt(st1,st2);
+	decrypt(nome_crypt,nome_decrypt);
 
 }
 
-void crypt(char st[],char st1[])
+void crypt(char st[],char st1[])			//prende carattere per carattere dal file originale e lo crypta seconda la chiave KEY 
 {
-	char c;					//dichiarazione c 
+	char car;					//dichiarazione c 
 	FILE *FileIN,*FileOUT; 		//dichiara i puntatori
 	
 	FileIN=fopen(st,"r"); 		//apre il file iniziale in read (lettura)
@@ -41,27 +43,27 @@ void crypt(char st[],char st1[])
 		while(!feof(FileIN))
 		{
 		
-			c=fgetc(FileIN);			//c prende il carattere dal file iniziale
+			car=fgetc(FileIN);			//c prende il carattere dal file iniziale
 			
-			if(c==' ')	
+			if(car==' ')	
 			{
-				c=' ';
-				fputc(c,FileOUT);
+				car=' ';
+				fputc(car,FileOUT);
 			}
 			else
 			{
-				if((c>='A' && c<='Z') || (c>='a' && c<='z'))  //controlla se c è compreso da A alla Z e da a alla z
+				if((car>='A' && car<='Z') || (car>='a' && car<='z'))  //controlla se c è compreso da A alla Z e da a alla z
 				{
 							
-					if(c=='X' || c=='Y' || c=='Z' || c=='x' || c=='y' || c=='z')  //controlla se c uguale a x,y, e z maiuscole e minuscole
+					if(car=='X' || car=='Y' || car=='Z' || car=='x' || car=='y' || car=='z')  //controlla se c uguale a x,y, e z maiuscole e minuscole
 					{
-						c-=26;			//toglie a c 26 nel codice ascii
+						car-=26;			//toglie a c 26 nel codice ascii
 					}
 					
-					c+=KEY;			//aggiunge a c 3 nel codice ascii
+					car+=KEY;			//aggiunge a c 3 nel codice ascii
 
 				
-					fputc(c,FileOUT);		//inserisce il carattere preso da c nel file destinazione	
+					fputc(car,FileOUT);		//inserisce il carattere preso da c nel file destinazione	
 				}
 			}			
 		}
@@ -78,9 +80,9 @@ void crypt(char st[],char st1[])
 	
 }
 
-void decrypt(char st[],char st1[])
-{
-	char c;
+void decrypt(char st[],char st1[])				//prende il testo dal file carattere per carattere lo decrypta secondo una chiave(costante KEY) 
+{												//il risultato sarà il testo identico a quello originale
+	char car;
 	FILE *FileIN,*FileOUT;
 	
 	FileIN=fopen(st,"r");
@@ -91,27 +93,27 @@ void decrypt(char st[],char st1[])
 		while(!feof(FileIN))
 		{
 		
-			c=fgetc(FileIN);
+			car=fgetc(FileIN);
 			
-			if(c==' ')
+			if(car==' ')
 			{
-				c=' ';
-				fputc(c,FileOUT);
+				car=' ';
+				fputc(car,FileOUT);
 			}
 			else
 			{
-				if((c>='A' && c<'Z') || (c>='a' && c<'z'))
+				if((car>='A' && car<'Z') || (car>='a' && car<'z'))
 				{
 							
-					if(c=='A' || c=='B' || c=='C' || c=='a' || c=='b' || c=='c')  //controlla se c uguale a x,y, e z maiuscole e minuscole
+					if(car=='A' || car=='B' || car=='C' || car=='a' || car=='b' || car=='c')  //controlla se c uguale a x,y, e z maiuscole e minuscole
 					{
-						c+=26;			//aggiunge a c 26 nel codice ascii
+						car+=26;			//aggiunge a c 26 nel codice ascii
 					}
 					
-					c-=KEY;			//toglie a c 3 nel codice ascii
+					car-=KEY;			//toglie a c 3 nel codice ascii
 
 				
-					fputc(c,FileOUT);		//inserisce il carattere preso da c nel file destinazione
+					fputc(car,FileOUT);		//inserisce il carattere preso da c nel file destinazione
 				}
 			}
 		}
@@ -122,3 +124,4 @@ void decrypt(char st[],char st1[])
 		printf("\n");
 	}
 }
+
