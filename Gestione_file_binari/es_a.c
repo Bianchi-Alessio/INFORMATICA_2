@@ -1,6 +1,6 @@
 void carica(char st[], int dim)
 {
-	s_stud buffer;
+	s_stud buffer[dim];
 	int i,j,n;
 	FILE *File; 		//dichiara i puntatori
 	
@@ -11,19 +11,19 @@ void carica(char st[], int dim)
 	{
 		for(i=0;i<dim;i++)
 		{
-			n=fread(&buffer,sizeof(struct s_stud),1,File);
 			//inserimento della stringa come cognome
 			printf("inserire il cognome dello studente.\n");
-			scanf("%s",buffer.cog);
+			scanf("%s",buffer[i].cog);
 			//inserimento voti
 			for(j=0;j<V;j++)
-				buffer.voti[j]=rand()%10;
+				buffer[i].voti[j]=rand()%10;
 			//inserimento data di nascita 
 			printf("inserire la data di nascita:\n");
-			scanf("%d",&buffer.nascita.gg);
-			scanf("%s",buffer.nascita.mese);
-			scanf("%d",&buffer.nascita.aa);
-			fwrite(&buffer,sizeof(struct s_stud),1,File);
+			scanf("%d",&buffer[i].nascita.gg);
+			scanf("%s",buffer[i].nascita.mese);
+			scanf("%d",&buffer[i].nascita.aa);
+			printf("\n");
+			fwrite(&buffer,sizeof(struct s_stud),dim,File);
 		}
 		fclose(File);
 	}
